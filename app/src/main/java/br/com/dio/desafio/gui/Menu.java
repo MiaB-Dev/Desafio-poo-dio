@@ -5,13 +5,16 @@
 package br.com.dio.desafio.gui;
 
 //imagem retirada de © <a href='https://www.123rf.com/profile_captainvector'>captainvector</a>, <a href='https://www.123rf.com/free-images/'>123RF Free Images</a>
-
 import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Mentoria;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 
 /**
  *
@@ -20,6 +23,7 @@ import java.util.Set;
 public class Menu extends javax.swing.JFrame {
 
     public static Set<Curso> Cursos = new LinkedHashSet<>();
+    public static Set<Mentoria> Mentorias = new LinkedHashSet<>();
 
     /**
      * Creates new form Menu
@@ -31,29 +35,38 @@ public class Menu extends javax.swing.JFrame {
         curso1.setDescricao("descrição curso java");
         curso1.setCargaHoraria(8);
         Cursos.add(curso1);
-        
-        curso1=new Curso();
+
+        curso1 = new Curso();
         curso1.setTitulo("curso C++");
         curso1.setDescricao("Desc C");
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
-              
+
         
-        System.out.println("fazer o inserir curso");
-        
+
         Curso curso2 = new Curso();
         curso2.setDescricao("Python course");
         curso2.setTitulo("Uma descrição");
         curso2.setCargaHoraria(13);
         Cursos.add(curso2);
+
+        Mentoria mentoria1 = new Mentoria();
+        mentoria1.setDescricao("TDD e Testes unitários");
+        mentoria1.setTitulo("Mentoria sobre testes");
+        mentoria1.setData(LocalDate.parse("2019-07-19"));
+        Mentorias.add(mentoria1);
         
+        Mentoria mentoria2 = new Mentoria();
+        mentoria2.setDescricao("Princípios SOLID");
+        mentoria2.setTitulo("Aplicações de SOLID");
+        mentoria2.setData(LocalDate.parse("2022-08-31"));
+        Mentorias.add(mentoria2);
+
         initComponents();
-  
+
     }
-    
-    public static void abc(){
-        System.out.println("ZOEEEEEE");
-    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,6 +125,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButton1.setText("Ver mentorias");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jBMentoria1.setText("Criar bootcamp");
         jBMentoria1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -206,12 +224,10 @@ public class Menu extends javax.swing.JFrame {
         FCurso dialog1 = new FCurso(new javax.swing.JFrame(), true);
         dialog1.setLocationRelativeTo(null);
         dialog1.setVisible(true);
-        
+
     }//GEN-LAST:event_jBCursoActionPerformed
 
     private void jBVerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerCursoActionPerformed
-        
-                
 
         ListaCursos exibe = new ListaCursos(new javax.swing.JFrame(), true);
         exibe.setLocationRelativeTo(null);
@@ -232,6 +248,12 @@ public class Menu extends javax.swing.JFrame {
         mentoria.setLocationRelativeTo(null);
         mentoria.setVisible(true);
     }//GEN-LAST:event_jBMentoriaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ListaMentorias exibeMenrorias = new ListaMentorias(new javax.swing.JFrame(), true);
+        exibeMenrorias.setLocationRelativeTo(null);
+        exibeMenrorias.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,16 +284,12 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                new Menu().setVisible(true);
-                        System.out.println("br.ZXCmain()");
 
-                
-                
-                
+                new Menu().setVisible(true);
+
             }
         });
-        System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+
         //System.out.println("Ficou dentro: " + Cursos.forEach(print));
         //System.out.println(Arrays.toString(Cursos.toArray()));
     }
