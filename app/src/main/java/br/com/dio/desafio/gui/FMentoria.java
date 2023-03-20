@@ -176,7 +176,7 @@ public class FMentoria extends javax.swing.JDialog {
             mentoria.setDescricao(jTDesc.getText());
             Menu.Mentorias.add(mentoria);
 
-            JOptionPane.showMessageDialog(null, "Curso inserido");
+            JOptionPane.showMessageDialog(null, "Mentoria inserida");
             jTNome.setText("");
             jTData.setText("");
             jTDesc.setText("");

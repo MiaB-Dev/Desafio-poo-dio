@@ -5,9 +5,7 @@
 package br.com.dio.desafio.gui;
 
 //imagem retirada de © <a href='https://www.123rf.com/profile_captainvector'>captainvector</a>, <a href='https://www.123rf.com/free-images/'>123RF Free Images</a>
-import br.com.dio.desafio.dominio.Conteudo;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -24,29 +22,28 @@ public class Menu extends javax.swing.JFrame {
 
     public static Set<Curso> Cursos = new LinkedHashSet<>();
     public static Set<Mentoria> Mentorias = new LinkedHashSet<>();
+    public static Set<Bootcamp> Bootcamps = new LinkedHashSet<>();
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         System.out.println("br.com.dio.desafio.gui.Menu.main()");
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
-        Cursos.add(curso1);
+        Curso cursox = new Curso();
+        cursox.setTitulo("curso java");
+        cursox.setDescricao("descrição curso java");
+        cursox.setCargaHoraria(8);
+        Cursos.add(cursox);
 
-        curso1 = new Curso();
+        Curso curso1 = new Curso();
         curso1.setTitulo("curso C++");
         curso1.setDescricao("Desc C");
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
 
-        
-
         Curso curso2 = new Curso();
-        curso2.setDescricao("Python course");
-        curso2.setTitulo("Uma descrição");
+        curso2.setTitulo("Python course");
+        curso2.setDescricao("Uma descrição");
         curso2.setCargaHoraria(13);
         Cursos.add(curso2);
 
@@ -55,18 +52,34 @@ public class Menu extends javax.swing.JFrame {
         mentoria1.setTitulo("Mentoria sobre testes");
         mentoria1.setData(LocalDate.parse("2019-07-19"));
         Mentorias.add(mentoria1);
-        
+
         Mentoria mentoria2 = new Mentoria();
         mentoria2.setDescricao("Princípios SOLID");
         mentoria2.setTitulo("Aplicações de SOLID");
         mentoria2.setData(LocalDate.parse("2022-08-31"));
         Mentorias.add(mentoria2);
 
+        Bootcamp bootcamp1 = new Bootcamp();
+        bootcamp1.setNome("Bootcamp Java Developer");
+        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp1.getConteudos().add(curso1);
+        bootcamp1.getConteudos().add(curso2);
+        bootcamp1.getConteudos().add(mentoria1);
+        Bootcamps.add(bootcamp1);
+
+        Bootcamp booacamp2 = new Bootcamp();
+        booacamp2.setNome("Teste Bootcamp");
+        booacamp2.setDescricao("Desc temp");
+        booacamp2.getConteudos().add(curso2);
+        booacamp2.getConteudos().add(cursox);
+        booacamp2.getConteudos().add(mentoria2);
+        Bootcamps.add(booacamp2);
+        
+        
+
         initComponents();
 
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,6 +149,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButton3.setText("Ver bootcamps");
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jBMentoria2.setText("Criar dev");
         jBMentoria2.setActionCommand("Criar bootcamp");
@@ -255,6 +273,13 @@ public class Menu extends javax.swing.JFrame {
         exibeMenrorias.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ListaBootcamps exibeBootcamps = new ListaBootcamps(this, rootPaneCheckingEnabled);
+        exibeBootcamps.setLocationRelativeTo(null);
+        exibeBootcamps.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,8 +315,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        //System.out.println("Ficou dentro: " + Cursos.forEach(print));
-        //System.out.println(Arrays.toString(Cursos.toArray()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
