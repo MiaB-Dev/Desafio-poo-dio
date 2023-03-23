@@ -96,7 +96,7 @@ public class Menu extends javax.swing.JFrame {
         jBMentoria = new javax.swing.JButton();
         jBVerCurso = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jBMentoria1 = new javax.swing.JButton();
+        jBCriarbootcamp = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jBMentoria2 = new javax.swing.JButton();
         jBMentoria3 = new javax.swing.JButton();
@@ -144,8 +144,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jBMentoria1.setText("Criar bootcamp");
-        jBMentoria1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCriarbootcamp.setText("Criar bootcamp");
+        jBCriarbootcamp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCriarbootcamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCriarbootcampActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Ver bootcamps");
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -187,7 +192,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jBMentoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBMentoria1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBCriarbootcamp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBMentoria2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -213,7 +218,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jBMentoria1))
+                    .addComponent(jBCriarbootcamp))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBMentoria2)
@@ -221,7 +226,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jBMentoria1.getAccessibleContext().setAccessibleName("");
+        jBCriarbootcamp.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,6 +285,12 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jBCriarbootcampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarbootcampActionPerformed
+        FBootcamp bootcamp = new FBootcamp(new javax.swing.JFrame(), true);
+        bootcamp.setLocationRelativeTo(null);
+        bootcamp.setVisible(true);
+    }//GEN-LAST:event_jBCriarbootcampActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,9 +329,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCriarbootcamp;
     private javax.swing.JButton jBCurso;
     private javax.swing.JButton jBMentoria;
-    private javax.swing.JButton jBMentoria1;
     private javax.swing.JButton jBMentoria2;
     private javax.swing.JButton jBMentoria3;
     private javax.swing.JButton jBVerCurso;

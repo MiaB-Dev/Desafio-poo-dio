@@ -64,7 +64,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jBMentoria" max="32767" attributes="0"/>
                               <Component id="jBCurso" max="32767" attributes="0"/>
-                              <Component id="jBMentoria1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jBCriarbootcamp" alignment="0" max="32767" attributes="0"/>
                               <Component id="jBMentoria2" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBMentoria1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBCriarbootcamp" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -155,7 +155,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jBMentoria1">
+        <Component class="javax.swing.JButton" name="jBCriarbootcamp">
           <Properties>
             <Property name="text" type="java.lang.String" value="Criar bootcamp"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -163,6 +163,9 @@
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
           </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCriarbootcampActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>

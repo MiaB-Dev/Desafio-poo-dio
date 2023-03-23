@@ -7,32 +7,64 @@ package br.com.dio.desafio.gui;
 import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.*;
+import java.awt.GridLayout;
 import java.awt.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Set;
 import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.ListModel;
+import javax.swing.border.Border;
+import java.awt.Component;
+import java.awt.Dimension;
+
+import javax.swing.*;
+import javax.swing.border.*;
+
+import java.awt.event.*;
 
 /**
  *
  * @author Userx
  */
-public class ListaBootcamps extends javax.swing.JDialog {
+public class FBootcamp extends javax.swing.JDialog {
 
+    DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+
+    //private final JCheckBox checkReg, checkPerm, checkAcc;
     /**
      * Creates new form FCurso
      */
-    public ListaBootcamps(java.awt.Frame parent, boolean modal) {
+    public FBootcamp(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
         initComponents();
+        //super.JPConteudos(new GridLayout(0, 1)); //1 column, any number of rows...
+        //DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+        JCheckBoxList checkBoxList = new JCheckBoxList(model);
+        checkBoxList.setSize(new Dimension(500, 200));
+        jPConteudo.add(checkBoxList);
 
-        for (Bootcamp bootcamp : Menu.Bootcamps) {
-            jComboBox1.addItem(bootcamp.getNome());
+        if (!Menu.Cursos.isEmpty()) {
+            for (Curso curso : Menu.Cursos) {
+                model.addElement(new JCheckBox(curso.getTitulo()));
+            }
         }
 
-        jComboBox1.setSelectedIndex(-1);
+        if (!Menu.Mentorias.isEmpty()) {
+            for (Mentoria mentoria : Menu.Mentorias) {
+                model.addElement(new JCheckBox(mentoria.getTitulo()));
+            }
+        }
+
+
+
+        
     }
 
     /**
@@ -48,7 +80,6 @@ public class ListaBootcamps extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTDescricao = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -56,12 +87,10 @@ public class ListaBootcamps extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTFim = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jLConteudos = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jDevs = new javax.swing.JList<>();
+        jTNome = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPConteudo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -72,18 +101,11 @@ public class ListaBootcamps extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Selecione um bootcamp");
+        jLabel1.setText("Criar bootcamp");
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome:");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jTDescricao.setEditable(false);
         jTDescricao.setColumns(10);
         jTDescricao.setRows(2);
         jTDescricao.setTabSize(4);
@@ -93,7 +115,6 @@ public class ListaBootcamps extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Início:");
 
-        jTInicio.setEditable(false);
         jTInicio.setToolTipText("");
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -104,35 +125,37 @@ public class ListaBootcamps extends javax.swing.JDialog {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Fim:");
 
-        jTFim.setEditable(false);
         jTFim.setToolTipText("");
-
-        jLConteudos.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(jLConteudos);
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Conteúdos:");
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Devs inscritos:");
+        jButton1.setText("Inserir bootcamp");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jDevs.setForeground(new java.awt.Color(0, 0, 0));
-        jDevs.setVerifyInputWhenFocusTarget(false);
-        jDevs.setVisibleRowCount(3);
-        jScrollPane3.setViewportView(jDevs);
+        javax.swing.GroupLayout jPConteudoLayout = new javax.swing.GroupLayout(jPConteudo);
+        jPConteudo.setLayout(jPConteudoLayout);
+        jPConteudoLayout.setHorizontalGroup(
+            jPConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPConteudoLayout.setVerticalGroup(
+            jPConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -145,48 +168,52 @@ public class ListaBootcamps extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTFim)
-                            .addComponent(jScrollPane2)
                             .addComponent(jTInicio, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(73, 73, 73))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                            .addComponent(jTNome)
+                            .addComponent(jPConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(33, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(105, 105, 105))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(101, 101, 101))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jTInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addComponent(jTFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(0, 87, Short.MAX_VALUE))
+                    .addComponent(jPConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jButton1)
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -216,52 +243,33 @@ public class ListaBootcamps extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//        if ((jTNome.getText().isEmpty()) || (jTInicio.getText().isEmpty())
+//                || (jTFim.getText().isEmpty()) || (jTDescricao.getText().isEmpty())
+//                || (jTDescricao.getText().isEmpty())// || (nenhum conteudo selecionado)
+//                ) {
+//            JOptionPane.showMessageDialog(null, "Favor preencher todos os campos");
+//        } else {
+//            Curso curso = new Curso();
+//            curso.setTitulo(jTNome.getText());
+//
+//            curso.setDescricao(jTDescricao.getText());
+//            Menu.Cursos.add(curso);
+//
+//            JOptionPane.showMessageDialog(null, "Curso inserido");
+//            jTNome.setText("");
+//
+//            jTDescricao.setText("");
+//
+//        }
 
-        jTInicio.setText("");
-        jTFim.setText("");
-        jTDescricao.setText("");
 
-        LocalDate localDate;
-        String dataInicio = "";
-        String dataFim = "a";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        String titulo, descricao = "";
-        var Conteudos = new ArrayList<Conteudo>();
-        DefaultListModel<String> model = new DefaultListModel<>();
-        jLConteudos.setModel(model);
-        model.addElement("");
-
-        if (jComboBox1.getSelectedItem() != null) {
-            titulo = jComboBox1.getSelectedItem().toString();
-            for (Bootcamp bootcamp : Menu.Bootcamps) {
-                if (bootcamp.getNome().equals(titulo)) {
-
-                    dataInicio = bootcamp.getDataInicial().format(formatter);
-                    dataFim = bootcamp.getDataFinal().format(formatter);
-
-                    descricao = bootcamp.getDescricao();
-
-                    bootcamp.getConteudos().forEach((conteudo) -> {
-                        Conteudos.add(conteudo);
-                    });
-
-                    //model.addElement(Conteudos.);
-                    break;
-                }
-                //System.out.print(titulo);
-            }
-
-            jTInicio.setText(dataInicio);
-            jTFim.setText(dataFim);
-            jTDescricao.setText(descricao);
-
-            Conteudos.forEach((t) -> {
-                model.addElement(t.getTitulo());
-            });
+        
+        if (model.get(1).isSelected()) {
+            System.out.println("selecionado");
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,14 +288,22 @@ public class ListaBootcamps extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaBootcamps.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FBootcamp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaBootcamps.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FBootcamp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaBootcamps.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FBootcamp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaBootcamps.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FBootcamp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -300,7 +316,7 @@ public class ListaBootcamps extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ListaBootcamps dialog = new ListaBootcamps(new javax.swing.JFrame(), true);
+                FBootcamp dialog = new FBootcamp(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -310,26 +326,71 @@ public class ListaBootcamps extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JList<String> jDevs;
-    private javax.swing.JList<String> jLConteudos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPConteudo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTDescricao;
     private javax.swing.JTextField jTFim;
     private javax.swing.JTextField jTInicio;
+    private javax.swing.JTextField jTNome;
     // End of variables declaration//GEN-END:variables
+}
+
+final class JCheckBoxList extends JList<JCheckBox> {
+
+    protected static Border noFocusBorder = new EmptyBorder(1, 1, 1, 1);
+
+    public JCheckBoxList() {
+        setCellRenderer(new CellRenderer());
+        addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                int index = locationToIndex(e.getPoint());
+                if (index != -1) {
+                    JCheckBox checkbox = (JCheckBox) getModel().getElementAt(index);
+                    checkbox.setSelected(!checkbox.isSelected());
+                    repaint();
+                }
+            }
+        });
+        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+
+    public JCheckBoxList(ListModel<JCheckBox> model) {
+        this();
+        setModel(model);
+    }
+
+    protected class CellRenderer implements ListCellRenderer<JCheckBox> {
+
+        public Component getListCellRendererComponent(
+                JList<? extends JCheckBox> list, JCheckBox value, int index,
+                boolean isSelected, boolean cellHasFocus) {
+            JCheckBox checkbox = value;
+
+            //Drawing checkbox, change the appearance here
+            checkbox.setBackground(isSelected ? getSelectionBackground()
+                    : getBackground());
+            checkbox.setForeground(isSelected ? getSelectionForeground()
+                    : getForeground());
+            checkbox.setEnabled(isEnabled());
+            checkbox.setFont(getFont());
+            checkbox.setFocusPainted(false);
+            checkbox.setBorderPainted(true);
+            checkbox.setBorder(isSelected ? UIManager
+                    .getBorder("List.focusCellHighlightBorder") : noFocusBorder);
+            return checkbox;
+        }
+    }
 }
