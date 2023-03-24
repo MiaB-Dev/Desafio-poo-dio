@@ -9,8 +9,10 @@ import java.util.Set;
 public class Bootcamp {
     private String nome;
     private String descricao;
-    private final LocalDate dataInicial = LocalDate.now();
-    private final LocalDate dataFinal = dataInicial.plusDays(45);
+    //private final LocalDate dataInicial = LocalDate.now();
+    //private final LocalDate dataFinal = dataInicial.plusDays(45);
+    private LocalDate dataInicial;
+    private LocalDate dataFinal;
     private Set<Dev> devsInscritos = new HashSet<>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
 
@@ -21,6 +23,14 @@ public class Bootcamp {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public void setDataInicial(LocalDate dataIni) {
+        this.dataInicial = dataIni;
+    }
+    
+    public void setDataFinal(LocalDate dataFim) {
+        this.dataFinal = dataFim;
     }
 
     public String getDescricao() {

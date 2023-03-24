@@ -28,7 +28,7 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
-        System.out.println("br.com.dio.desafio.gui.Menu.main()");
+        
         Curso cursox = new Curso();
         cursox.setTitulo("curso java");
         cursox.setDescricao("descrição curso java");
@@ -59,21 +59,27 @@ public class Menu extends javax.swing.JFrame {
         mentoria2.setData(LocalDate.parse("2022-08-31"));
         Mentorias.add(mentoria2);
 
-        Bootcamp bootcamp1 = new Bootcamp();
-        bootcamp1.setNome("Bootcamp Java Developer");
-        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp1.getConteudos().add(curso1);
-        bootcamp1.getConteudos().add(curso2);
-        bootcamp1.getConteudos().add(mentoria1);
-        Bootcamps.add(bootcamp1);
+//        Bootcamp bootcamp1 = new Bootcamp();
+//        bootcamp1.setNome("Bootcamp Java Developer");
+//        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
+//        bootcamp1.setDataInicial(LocalDate.now());
+//        bootcamp1.setDataFinal(bootcamp1.getDataInicial().plusDays(45));
+//        bootcamp1.getConteudos().add(curso1);
+//        bootcamp1.getConteudos().add(curso2);
+//        bootcamp1.getConteudos().add(mentoria1);
+//        Bootcamps.add(bootcamp1);
 
-        Bootcamp booacamp2 = new Bootcamp();
-        booacamp2.setNome("Teste Bootcamp");
-        booacamp2.setDescricao("Desc temp");
-        booacamp2.getConteudos().add(curso2);
-        booacamp2.getConteudos().add(cursox);
-        booacamp2.getConteudos().add(mentoria2);
-        Bootcamps.add(booacamp2);
+        Bootcamp bootcamp2 = new Bootcamp();
+        bootcamp2.setNome("Teste Bootcamp");
+        bootcamp2.setDescricao("Desc temp");
+        bootcamp2.setDataInicial(LocalDate.now());
+        bootcamp2.setDataFinal(LocalDate.now().plusDays(45));
+        System.out.println("data inicial: " + bootcamp2.getDataInicial());
+        System.out.println("data final: " + bootcamp2.getDataInicial());
+        bootcamp2.getConteudos().add(curso2);
+        bootcamp2.getConteudos().add(cursox);
+        bootcamp2.getConteudos().add(mentoria2);
+        Bootcamps.add(bootcamp2);
         
         
 

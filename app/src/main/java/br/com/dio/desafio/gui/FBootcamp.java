@@ -27,6 +27,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import java.awt.event.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 
 /**
  *
@@ -52,19 +55,16 @@ public class FBootcamp extends javax.swing.JDialog {
 
         if (!Menu.Cursos.isEmpty()) {
             for (Curso curso : Menu.Cursos) {
-                model.addElement(new JCheckBox(curso.getTitulo()));
+                model.addElement(new JCheckBox(curso.getTitulo() + " - C"));
             }
         }
 
         if (!Menu.Mentorias.isEmpty()) {
             for (Mentoria mentoria : Menu.Mentorias) {
-                model.addElement(new JCheckBox(mentoria.getTitulo()));
+                model.addElement(new JCheckBox(mentoria.getTitulo() + " - M"));
             }
         }
 
-
-
-        
     }
 
     /**
@@ -244,30 +244,68 @@ public class FBootcamp extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        if ((jTNome.getText().isEmpty()) || (jTInicio.getText().isEmpty())
-//                || (jTFim.getText().isEmpty()) || (jTDescricao.getText().isEmpty())
-//                || (jTDescricao.getText().isEmpty())// || (nenhum conteudo selecionado)
-//                ) {
-//            JOptionPane.showMessageDialog(null, "Favor preencher todos os campos");
-//        } else {
-//            Curso curso = new Curso();
-//            curso.setTitulo(jTNome.getText());
-//
-//            curso.setDescricao(jTDescricao.getText());
-//            Menu.Cursos.add(curso);
-//
-//            JOptionPane.showMessageDialog(null, "Curso inserido");
-//            jTNome.setText("");
-//
-//            jTDescricao.setText("");
-//
-//        }
+        String conteudo;
 
+        if ((jTNome.getText().isEmpty()) || (jTInicio.getText().isEmpty())
+                || (jTFim.getText().isEmpty()) || (jTDescricao.getText().isEmpty())
+                || (jTDescricao.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Favor preencher todos os campos");
+        } else {
+            Bootcamp bootcamp = new Bootcamp();
+            bootcamp.setNome(jTNome.getText());
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            bootcamp.setDataInicial(LocalDate.parse(jTInicio.getText(), format));
+            bootcamp.setDataFinal(LocalDate.parse(jTFim.getText(), format));
+            bootcamp.setDescricao(jTDescricao.getText());
 
-        
-        if (model.get(1).isSelected()) {
-            System.out.println("selecionado");
+            for (int i = 0; i < model.size(); i++) {
+                if (model.get(i).isSelected()) {
+                    conteudo = model.get(i).getText();
+                    if (conteudo.contains(" - C")) {
+                        conteudo = conteudo.replace(" - C", "");
+                        for (Curso curso : Menu.Cursos) {
+                            if (curso.getTitulo().equals(conteudo)) {
+                                bootcamp.getConteudos().add(curso);
+                                break;
+                            }
+                        }
+
+                    } else {
+                        conteudo = conteudo.replace(" - M", "");
+                        for (Mentoria mentoria : Menu.Mentorias) {
+                            if (mentoria.getTitulo().equals(conteudo)) {
+                                bootcamp.getConteudos().add(mentoria);
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            Menu.Bootcamps.add(bootcamp);
+
+            JOptionPane.showMessageDialog(null, "Bootcamp inserido com sucesso");
+            jTNome.setText("");
+            jTInicio.setText("");
+            jTFim.setText("");
+            jTDescricao.setText("");
+
+            model.clear();
+            if (!Menu.Cursos.isEmpty()) {
+                for (Curso curso : Menu.Cursos) {
+                    model.addElement(new JCheckBox(curso.getTitulo() + " - C"));
+                }
+            }
+
+            if (!Menu.Mentorias.isEmpty()) {
+                for (Mentoria mentoria : Menu.Mentorias) {
+                    model.addElement(new JCheckBox(mentoria.getTitulo() + " - M"));
+                }
+            }
+
         }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
