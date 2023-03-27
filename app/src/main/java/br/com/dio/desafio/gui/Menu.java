@@ -23,6 +23,7 @@ public class Menu extends javax.swing.JFrame {
     public static Set<Curso> Cursos = new LinkedHashSet<>();
     public static Set<Mentoria> Mentorias = new LinkedHashSet<>();
     public static Set<Bootcamp> Bootcamps = new LinkedHashSet<>();
+    public static Set<Dev> Devs = new LinkedHashSet<>();
 
     /**
      * Creates new form Menu
