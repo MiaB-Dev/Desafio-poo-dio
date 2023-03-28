@@ -19,7 +19,7 @@ import java.util.Set;
  * @author Userx
  */
 public class Menu extends javax.swing.JFrame {
-
+    
     public static Set<Curso> Cursos = new LinkedHashSet<>();
     public static Set<Mentoria> Mentorias = new LinkedHashSet<>();
     public static Set<Bootcamp> Bootcamps = new LinkedHashSet<>();
@@ -35,41 +35,40 @@ public class Menu extends javax.swing.JFrame {
         cursox.setDescricao("descrição curso java");
         cursox.setCargaHoraria(8);
         Cursos.add(cursox);
-
+        
         Curso curso1 = new Curso();
         curso1.setTitulo("curso C++");
         curso1.setDescricao("Desc C");
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
-
+        
         Curso curso2 = new Curso();
         curso2.setTitulo("Python course");
         curso2.setDescricao("Uma descrição");
         curso2.setCargaHoraria(13);
         Cursos.add(curso2);
-
+        
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setDescricao("TDD e Testes unitários");
         mentoria1.setTitulo("Mentoria sobre testes");
         mentoria1.setData(LocalDate.parse("2019-07-19"));
         Mentorias.add(mentoria1);
-
+        
         Mentoria mentoria2 = new Mentoria();
         mentoria2.setDescricao("Princípios SOLID");
         mentoria2.setTitulo("Aplicações de SOLID");
         mentoria2.setData(LocalDate.parse("2022-08-31"));
         Mentorias.add(mentoria2);
 
-//        Bootcamp bootcamp1 = new Bootcamp();
-//        bootcamp1.setNome("Bootcamp Java Developer");
-//        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
-//        bootcamp1.setDataInicial(LocalDate.now());
-//        bootcamp1.setDataFinal(bootcamp1.getDataInicial().plusDays(45));
-//        bootcamp1.getConteudos().add(curso1);
-//        bootcamp1.getConteudos().add(curso2);
-//        bootcamp1.getConteudos().add(mentoria1);
-//        Bootcamps.add(bootcamp1);
-
+        Bootcamp bootcamp1 = new Bootcamp();
+        bootcamp1.setNome("Bootcamp Java Developer");
+        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp1.setDataInicial(LocalDate.now());
+        bootcamp1.setDataFinal(bootcamp1.getDataInicial().plusDays(45));
+        bootcamp1.getConteudos().add(curso1);
+        bootcamp1.getConteudos().add(curso2);
+        bootcamp1.getConteudos().add(mentoria1);
+        Bootcamps.add(bootcamp1);
         Bootcamp bootcamp2 = new Bootcamp();
         bootcamp2.setNome("Teste Bootcamp");
         bootcamp2.setDescricao("Desc temp");
@@ -82,10 +81,16 @@ public class Menu extends javax.swing.JFrame {
         bootcamp2.getConteudos().add(mentoria2);
         Bootcamps.add(bootcamp2);
         
+        Dev dev1 = new Dev();
+        dev1.setNome("joão");
         
-
+        dev1.inscreverBootcamp(bootcamp2);
+        dev1.inscreverBootcamp(bootcamp1);
+        dev1.progredir();
+        Devs.add(dev1);
+        
         initComponents();
-
+        
     }
 
     /**
@@ -176,7 +181,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jBMentoria3.setText("Ver dev");
+        jBMentoria3.setText("Ver devs");
         jBMentoria3.setActionCommand("Criar bootcamp");
         jBMentoria3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBMentoria3.addActionListener(new java.awt.event.ActionListener() {
@@ -258,18 +263,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCursoActionPerformed
 
     private void jBVerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerCursoActionPerformed
-
+        
         ListaCursos exibe = new ListaCursos(new javax.swing.JFrame(), true);
         exibe.setLocationRelativeTo(null);
         exibe.setVisible(true);
     }//GEN-LAST:event_jBVerCursoActionPerformed
 
     private void jBMentoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMentoria2ActionPerformed
-        // TODO add your handling code here:
+        FDev exibe = new FDev(new javax.swing.JFrame(), true);
+        exibe.setLocationRelativeTo(null);
+        exibe.setVisible(true);
     }//GEN-LAST:event_jBMentoria2ActionPerformed
 
     private void jBMentoria3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMentoria3ActionPerformed
-        // TODO add your handling code here:
+        ListaDevs exibe = new ListaDevs(new javax.swing.JFrame(), true);
+        exibe.setLocationRelativeTo(null);
+        exibe.setVisible(true);
     }//GEN-LAST:event_jBMentoria3ActionPerformed
 
     private void jBMentoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMentoriaActionPerformed
@@ -327,12 +336,12 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
+                
                 new Menu().setVisible(true);
-
+                
             }
         });
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

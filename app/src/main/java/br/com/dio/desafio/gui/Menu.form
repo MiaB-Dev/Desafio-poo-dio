@@ -188,7 +188,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBMentoria3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ver dev"/>
+            <Property name="text" type="java.lang.String" value="Ver devs"/>
             <Property name="actionCommand" type="java.lang.String" value="Criar bootcamp"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
