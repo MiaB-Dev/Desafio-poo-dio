@@ -10,12 +10,15 @@ import br.com.dio.desafio.dominio.Dev;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Userx
  */
 public class ListaDevs extends javax.swing.JDialog {
+
+    private Dev dev_selec;
 
     /**
      * Creates new form FCurso
@@ -104,6 +107,11 @@ public class ListaDevs extends javax.swing.JDialog {
         jLabel5.setText("Cont. Finalizados:");
 
         jButton1.setText("Progredir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -220,22 +228,18 @@ public class ListaDevs extends javax.swing.JDialog {
             nome = jComboBox1.getSelectedItem().toString();
             for (Dev dev : Menu.Devs) {
                 if (dev.getNome().equals(nome)) {
+                    dev_selec = dev;
                     jTXP.setText(String.valueOf(dev.calcularTotalXp()));
                     conteudosInscritos = dev.getConteudosInscritos();
                     conteudosInscritos.forEach((t) -> {
                         model.addElement(t.getTitulo());
                     });
 
-                    
                     conteudosConcluidos = dev.getConteudosConcluidos();
                     conteudosConcluidos.forEach((t) -> {
                         model2.addElement(t.getTitulo());
                     });
-                    
-                    
-                    
 
-                    
                     /*return this.conteudosConcluidos
                 .stream()
                 .mapToDouble(Conteudo::calcularXp)
@@ -248,6 +252,45 @@ public class ListaDevs extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        dev_selec.progredir();
+        //Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
+        //Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+        Set<Conteudo> conteudosInscritos = dev_selec.getConteudosInscritos();
+        Set<Conteudo> conteudosConcluidos = dev_selec.getConteudosConcluidos();
+        if ( (jComboBox1.getSelectedItem() != null) && (!conteudosInscritos.isEmpty()) ){
+
+            DefaultListModel<String> model = new DefaultListModel<>();
+            DefaultListModel<String> model2 = new DefaultListModel<>();
+            jLCInscritos.setModel(model);
+            jLCFinal.setModel(model2);
+
+            jTXP.setText(String.valueOf(dev_selec.calcularTotalXp()));
+            //conteudosInscritos = dev_selec.getConteudosInscritos();
+            conteudosInscritos.forEach((t) -> {
+                model.addElement(t.getTitulo());
+            });
+
+            //conteudosConcluidos = dev_selec.getConteudosConcluidos();
+            conteudosConcluidos.forEach((t) -> {
+                model2.addElement(t.getTitulo());
+            });
+
+            /*return this.conteudosConcluidos
+                .stream()
+                .mapToDouble(Conteudo::calcularXp)
+                .sum();*/
+        } else {
+            if ((conteudosInscritos.isEmpty()))
+                JOptionPane.showMessageDialog(null, "Você não está matriculado em nenhum conteúdo");
+            else
+                JOptionPane.showMessageDialog(null, "Selecione um dev");
+            
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
