@@ -168,7 +168,7 @@ public class FCurso extends javax.swing.JDialog {
             curso.setTitulo(jTNome.getText());
 
             try {
-                Integer.valueOf(jTCargaHoraria.getText());
+                curso.setCargaHoraria(Integer.parseInt(jTCargaHoraria.getText()));
 
                 curso.setDescricao(jTDescricao.getText());
                 Menu.Cursos.add(curso);

@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         
+        /*
         Curso cursox = new Curso();
         cursox.setTitulo("curso java");
         cursox.setDescricao("descrição curso java");
@@ -42,11 +43,11 @@ public class Menu extends javax.swing.JFrame {
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
         
-        Curso curso2 = new Curso();
-        curso2.setTitulo("Python course");
-        curso2.setDescricao("Uma descrição");
-        curso2.setCargaHoraria(13);
-        Cursos.add(curso2);
+//        Curso curso2 = new Curso();
+//        curso2.setTitulo("Python course");
+//        curso2.setDescricao("Uma descrição");
+//        curso2.setCargaHoraria(13);
+//        Cursos.add(curso2);
         
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setDescricao("TDD e Testes unitários");
@@ -66,7 +67,7 @@ public class Menu extends javax.swing.JFrame {
         bootcamp1.setDataInicial(LocalDate.now());
         bootcamp1.setDataFinal(bootcamp1.getDataInicial().plusDays(45));
         bootcamp1.getConteudos().add(curso1);
-        bootcamp1.getConteudos().add(curso2);
+//        bootcamp1.getConteudos().add(curso2);
         bootcamp1.getConteudos().add(mentoria1);
         Bootcamps.add(bootcamp1);
         Bootcamp bootcamp2 = new Bootcamp();
@@ -75,8 +76,8 @@ public class Menu extends javax.swing.JFrame {
         bootcamp2.setDataInicial(LocalDate.now());
         bootcamp2.setDataFinal(LocalDate.now().plusDays(45));
         System.out.println("data inicial: " + bootcamp2.getDataInicial());
-        System.out.println("data final: " + bootcamp2.getDataInicial());
-        bootcamp2.getConteudos().add(curso2);
+        System.out.println("data final: " + bootcamp2.getDataFinal());
+//        bootcamp2.getConteudos().add(curso2);
         bootcamp2.getConteudos().add(cursox);
         bootcamp2.getConteudos().add(mentoria2);
         Bootcamps.add(bootcamp2);
@@ -88,7 +89,7 @@ public class Menu extends javax.swing.JFrame {
         dev1.inscreverBootcamp(bootcamp1);
         dev1.progredir();
         Devs.add(dev1);
-        
+        */
         initComponents();
         
     }

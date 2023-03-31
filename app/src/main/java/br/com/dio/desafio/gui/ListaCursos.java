@@ -184,7 +184,7 @@ public class ListaCursos extends javax.swing.JDialog {
                     descricao = curso.getDescricao();
                     break;
                 }
-                System.out.print(titulo);
+                
             }
             jTCargaHoraria.setText(String.valueOf(cargaHoraria));
             jTDescricao.setText(descricao);
