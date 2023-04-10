@@ -8,6 +8,7 @@ import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Dev;
+import br.com.dio.desafio.dominio.Mentoria;
 import java.awt.Dimension;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -47,7 +48,7 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
 
         if (!Menu.Bootcamps.isEmpty()) {
             for (Bootcamp bootcamp : Menu.Bootcamps) {
-                model.addElement(new JCheckBox(bootcamp.getNome()+ " - C"));
+                model.addElement(new JCheckBox(bootcamp.getNome()));
             }
         }
     }
@@ -205,67 +206,51 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
 
 //        model.addElement("");
 //        model.addElement("abc");
+        //JOptionPane.showMessageDialog(null, "Você não está matriculado em nenhum conteúdo");
         if (jComboBox1.getSelectedItem() != null) {
             nome = jComboBox1.getSelectedItem().toString();
             for (Dev dev : Menu.Devs) {
                 if (dev.getNome().equals(nome)) {
                     dev_selec = dev;
-
-                    conteudosInscritos = dev.getConteudosInscritos();
-                    conteudosInscritos.forEach((t) -> {
-                        model.addElement(t.getTitulo());
-                    });
-
-                    conteudosConcluidos = dev.getConteudosConcluidos();
-                    conteudosConcluidos.forEach((t) -> {
-                        model2.addElement(t.getTitulo());
-                    });
-
-                    /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
                     break;
                 }
-                System.out.print(nome);
             }
-
         }
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        String boot;
         //dev_selec.progredir();
         //Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
         //Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
         Set<Conteudo> conteudosInscritos = dev_selec.getConteudosInscritos();
         Set<Conteudo> conteudosConcluidos = dev_selec.getConteudosConcluidos();
-        if ((jComboBox1.getSelectedItem() != null) && (!conteudosInscritos.isEmpty())) {
+        if ((jComboBox1.getSelectedItem() != null)) {
 
-            DefaultListModel<String> model = new DefaultListModel<>();
-            DefaultListModel<String> model2 = new DefaultListModel<>();
-
-            //conteudosInscritos = dev_selec.getConteudosInscritos();
-            conteudosInscritos.forEach((t) -> {
-                model.addElement(t.getTitulo());
-            });
-
-            //conteudosConcluidos = dev_selec.getConteudosConcluidos();
-            conteudosConcluidos.forEach((t) -> {
-                model2.addElement(t.getTitulo());
-            });
-
-            /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
-        } else {
-            if ((conteudosInscritos.isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Você não está matriculado em nenhum conteúdo");
-            } else {
-                JOptionPane.showMessageDialog(null, "Selecione um dev");
+            for (int i = 0; i < model.size(); i++) {
+                if (model.get(i).isSelected()) {
+                    boot = model.get(i).getText();
+                    for (Bootcamp bootcamp : Menu.Bootcamps) {
+                        if (bootcamp.getNome().equals(boot)) {
+                            dev_selec.inscreverBootcamp(bootcamp);
+                            break;
+                        }
+                    }
+                }
             }
+            JOptionPane.showMessageDialog(null, "Dev foi inscrito no(s) bootcamp(s)");
+            model.clear();
+            if (!Menu.Bootcamps.isEmpty()) {
+                for (Bootcamp bootcamp : Menu.Bootcamps) {
+                    model.addElement(new JCheckBox(bootcamp.getNome()));
+                }
+            }
+            jComboBox1.setSelectedIndex(-1);
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Selecione um dev");
 
         }
 

@@ -32,22 +32,22 @@ public class Menu extends javax.swing.JFrame {
         
         
         Curso cursox = new Curso();
-        cursox.setTitulo("curso java");
+        cursox.setTitulo("Curso Java");
         cursox.setDescricao("descrição curso java");
         cursox.setCargaHoraria(8);
         Cursos.add(cursox);
         
         Curso curso1 = new Curso();
-        curso1.setTitulo("curso C++");
+        curso1.setTitulo("Curso C++");
         curso1.setDescricao("Desc C");
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
         
-//        Curso curso2 = new Curso();
-//        curso2.setTitulo("Python course");
-//        curso2.setDescricao("Uma descrição");
-//        curso2.setCargaHoraria(13);
-//        Cursos.add(curso2);
+        Curso curso2 = new Curso();
+        curso2.setTitulo("Curso de Python");
+        curso2.setDescricao("Curso básico de Python");
+        curso2.setCargaHoraria(13);
+        Cursos.add(curso2);
         
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setDescricao("TDD e Testes unitários");
@@ -62,8 +62,8 @@ public class Menu extends javax.swing.JFrame {
         Mentorias.add(mentoria2);
 
         Bootcamp bootcamp1 = new Bootcamp();
-        bootcamp1.setNome("Bootcamp Java Developer");
-        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp1.setNome("Bootcamp C intensivo");
+        bootcamp1.setDescricao("Bootcamp sobre C");
         bootcamp1.setDataInicial(LocalDate.now());
         bootcamp1.setDataFinal(bootcamp1.getDataInicial().plusDays(45));
         bootcamp1.getConteudos().add(curso1);
@@ -83,12 +83,16 @@ public class Menu extends javax.swing.JFrame {
         Bootcamps.add(bootcamp2);
         
         Dev dev1 = new Dev();
-        dev1.setNome("joão");
+        dev1.setNome("João");
         
-        dev1.inscreverBootcamp(bootcamp2);
+        Dev dev2 = new Dev();
+        dev2.setNome("Marta");
+        
+        //dev1.inscreverBootcamp(bootcamp2);
         dev1.inscreverBootcamp(bootcamp1);
-        dev1.progredir();
+        //dev1.progredir();
         Devs.add(dev1);
+        Devs.add(dev2);
         
         initComponents();
         

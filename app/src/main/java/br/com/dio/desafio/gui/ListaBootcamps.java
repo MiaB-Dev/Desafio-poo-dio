@@ -231,9 +231,13 @@ public class ListaBootcamps extends javax.swing.JDialog {
 
         String titulo, descricao = "";
         var Conteudos = new ArrayList<Conteudo>();
+        var Devs = new ArrayList<Dev>();
         DefaultListModel<String> model = new DefaultListModel<>();
+        DefaultListModel<String> model_dev = new DefaultListModel<>();
         jLConteudos.setModel(model);
+        jDevs.setModel(model_dev);
         model.addElement("");
+        model_dev.addElement("");
 
         if (jComboBox1.getSelectedItem() != null) {
             titulo = jComboBox1.getSelectedItem().toString();
@@ -249,6 +253,10 @@ public class ListaBootcamps extends javax.swing.JDialog {
                         Conteudos.add(conteudo);
                     });
 
+                    bootcamp.getDevsInscritos().forEach((dev) -> {
+                        Devs.add(dev);
+                    });
+
                     //model.addElement(Conteudos.);
                     break;
                 }
@@ -261,6 +269,10 @@ public class ListaBootcamps extends javax.swing.JDialog {
 
             Conteudos.forEach((t) -> {
                 model.addElement(t.getTitulo());
+            });
+
+            Devs.forEach((t) -> {
+                model_dev.addElement(t.getNome());
             });
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
