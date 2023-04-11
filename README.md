@@ -134,3 +134,4 @@ Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de p
 
 **OBS**: Toda trilha de estudos foi realizada com as orientações do curso da DIO, **Abstraindo um Bootcamp Usando Orientação a Objetos em Java**, ministrado pela teacher ♥  [cami-la](https://www.linkedin.com/in/cami-la/ "cami-la").
 
+Imagem da tela principal retirada de © <a href='https://www.123rf.com/profile_captainvector'>captainvector</a>, <a href='https://www.123rf.com/free-images/'>123RF Free Images</a>
