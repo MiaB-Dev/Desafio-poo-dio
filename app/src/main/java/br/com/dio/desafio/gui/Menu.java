@@ -58,6 +58,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
 
+        /* Dados para teste
+        
         Curso cursox = new Curso();
         cursox.setTitulo("Curso Java");
         cursox.setDescricao("descrição curso java");
@@ -104,6 +106,7 @@ public class Menu extends javax.swing.JFrame {
 
         Devs.add(dev1);
         Devs.add(dev2);
+        */
 
         initComponents();
 
