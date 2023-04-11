@@ -14,7 +14,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável por gerar a tela de listagem de devs e seus dados,
+ * além de permitir avançar nos conteúdos.
  */
 public class ListaDevs extends javax.swing.JDialog {
 
@@ -209,7 +212,7 @@ public class ListaDevs extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        
         jTXP.setText("");
 
         String nome;
@@ -220,8 +223,7 @@ public class ListaDevs extends javax.swing.JDialog {
         DefaultListModel<String> model2 = new DefaultListModel<>();
         jLCInscritos.setModel(model);
         jLCFinal.setModel(model2);
-//        model.addElement("");
-//        model.addElement("abc");
+
 
         if (jComboBox1.getSelectedItem() != null) {
             nome = jComboBox1.getSelectedItem().toString();

@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável por gerar a tela de criação de curso.
  */
 public class FCurso extends javax.swing.JDialog {
 
@@ -164,9 +166,8 @@ public class FCurso extends javax.swing.JDialog {
 
             try {
                 curso.setCargaHoraria(Integer.parseInt(jTCargaHoraria.getText()));
-
                 curso.setDescricao(jTDescricao.getText());
-                Menu.getCursos().add(curso);
+                Menu.add_Curso(curso);
 
                 JOptionPane.showMessageDialog(null, "Curso inserido");
                 jTNome.setText("");

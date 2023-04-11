@@ -6,11 +6,7 @@ package br.com.dio.desafio.gui;
 
 //imagem retirada de © <a href='https://www.123rf.com/profile_captainvector'>captainvector</a>, <a href='https://www.123rf.com/free-images/'>123RF Free Images</a>
 import br.com.dio.desafio.dominio.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,7 +15,7 @@ import java.util.Set;
  * @author Mia
  */
 public class Menu extends javax.swing.JFrame {
-    
+
     public final static Set<Curso> Cursos = new LinkedHashSet<>();
     public final static Set<Mentoria> Mentorias = new LinkedHashSet<>();
     public final static Set<Bootcamp> Bootcamps = new LinkedHashSet<>();
@@ -33,54 +29,52 @@ public class Menu extends javax.swing.JFrame {
         return Mentorias;
     }
 
-
     public static Set<Bootcamp> getBootcamps() {
         return Bootcamps;
     }
-
 
     public static Set<Dev> getDevs() {
         return Devs;
     }
 
+    public static void add_Dev(Dev dev) {
+        Devs.add(dev);
+    }
 
+    public static void add_Bootcamp(Bootcamp bootcamp) {
+        Bootcamps.add(bootcamp);
+    }
+
+    public static void add_Curso(Curso curso) {
+        Cursos.add(curso);
+    }
+
+    public static void add_Mentoria(Mentoria mentoria) {
+        Mentorias.add(mentoria);
+    }
 
     /**
      * Creates new form Menu
      */
     public Menu() {
-        
-        
+
         Curso cursox = new Curso();
         cursox.setTitulo("Curso Java");
         cursox.setDescricao("descrição curso java");
         cursox.setCargaHoraria(8);
         Cursos.add(cursox);
-        
+
         Curso curso1 = new Curso();
         curso1.setTitulo("Curso C++");
         curso1.setDescricao("Desc C");
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
-        
-        /*Curso curso2 = new Curso();
-        curso2.setTitulo("Curso de Python");
-        curso2.setDescricao("Curso básico de Python");
-        curso2.setCargaHoraria(13);
-        Cursos.add(curso2);
-        */
-        
+
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setDescricao("TDD e Testes unitários");
         mentoria1.setTitulo("Mentoria sobre testes");
         mentoria1.setData(LocalDate.parse("2019-07-19"));
         Mentorias.add(mentoria1);
-        /*
-        Mentoria mentoria2 = new Mentoria();
-        mentoria2.setDescricao("Princípios SOLID");
-        mentoria2.setTitulo("Aplicações de SOLID");
-        mentoria2.setData(LocalDate.parse("2022-08-31"));
-        Mentorias.add(mentoria2);*/
 
         Bootcamp bootcamp1 = new Bootcamp();
         bootcamp1.setNome("Bootcamp C intensivo");
@@ -88,35 +82,31 @@ public class Menu extends javax.swing.JFrame {
         bootcamp1.setDataInicial(LocalDate.now());
         bootcamp1.setDataFinal(bootcamp1.getDataInicial().plusDays(45));
         bootcamp1.getConteudos().add(curso1);
-//        bootcamp1.getConteudos().add(curso2);
         bootcamp1.getConteudos().add(mentoria1);
         Bootcamps.add(bootcamp1);
+        
         Bootcamp bootcamp2 = new Bootcamp();
         bootcamp2.setNome("Teste Bootcamp");
         bootcamp2.setDescricao("Desc temp");
         bootcamp2.setDataInicial(LocalDate.now());
         bootcamp2.setDataFinal(LocalDate.now().plusDays(45));
-        //System.out.println("data inicial: " + bootcamp2.getDataInicial());
-        //System.out.println("data final: " + bootcamp2.getDataFinal());
-//        bootcamp2.getConteudos().add(curso2);
         bootcamp2.getConteudos().add(cursox);
         bootcamp2.getConteudos().add(mentoria1);
         Bootcamps.add(bootcamp2);
-        
+
         Dev dev1 = new Dev();
         dev1.setNome("João");
-        
+
         Dev dev2 = new Dev();
         dev2.setNome("Marta");
-        
-        //dev1.inscreverBootcamp(bootcamp2);
+
         dev1.inscreverBootcamp(bootcamp1);
-        //dev1.progredir();
+
         Devs.add(dev1);
         Devs.add(dev2);
-        
+
         initComponents();
-        
+
     }
 
     /**
@@ -302,7 +292,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCursoActionPerformed
 
     private void jBVerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerCursoActionPerformed
-        
+
         ListaCursos exibe = new ListaCursos(new javax.swing.JFrame(), true);
         exibe.setLocationRelativeTo(null);
         exibe.setVisible(true);
@@ -337,7 +327,7 @@ public class Menu extends javax.swing.JFrame {
         ListaBootcamps exibeBootcamps = new ListaBootcamps(this, rootPaneCheckingEnabled);
         exibeBootcamps.setLocationRelativeTo(null);
         exibeBootcamps.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jBCriarbootcampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarbootcampActionPerformed
@@ -381,12 +371,12 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new Menu().setVisible(true);
-                
+
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

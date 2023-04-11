@@ -5,18 +5,17 @@
 package br.com.dio.desafio.gui;
 
 import br.com.dio.desafio.dominio.Conteudo;
-import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.*;
-import java.awt.List;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Set;
 import javax.swing.DefaultListModel;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável por gerar a tela de listagem de bootcamps e seus dados.
+ * 
  */
 public class ListaBootcamps extends javax.swing.JDialog {
 
@@ -223,8 +222,6 @@ public class ListaBootcamps extends javax.swing.JDialog {
         jTInicio.setText("");
         jTFim.setText("");
         jTDescricao.setText("");
-
-        //LocalDate localDate;
         String dataInicio = "";
         String dataFim = "a";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -243,24 +240,19 @@ public class ListaBootcamps extends javax.swing.JDialog {
             titulo = jComboBox1.getSelectedItem().toString();
             for (Bootcamp bootcamp : Menu.getBootcamps()) {
                 if (bootcamp.getNome().equals(titulo)) {
-
                     dataInicio = bootcamp.getDataInicial().format(formatter);
                     dataFim = bootcamp.getDataFinal().format(formatter);
-
                     descricao = bootcamp.getDescricao();
 
                     bootcamp.getConteudos().forEach((conteudo) -> {
                         Conteudos.add(conteudo);
                     });
-
                     bootcamp.getDevsInscritos().forEach((dev) -> {
                         Devs.add(dev);
                     });
 
-                    //model.addElement(Conteudos.);
                     break;
                 }
-                //System.out.print(titulo);
             }
 
             jTInicio.setText(dataInicio);

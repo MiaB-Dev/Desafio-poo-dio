@@ -10,6 +10,9 @@ import br.com.dio.desafio.dominio.Curso;
 /**
  *
  * @author Mia
+ * 
+ * Classe responsável por gerar a tela de listagem de cursos e seus dados.
+ * 
  */
 public class ListaCursos extends javax.swing.JDialog {
 

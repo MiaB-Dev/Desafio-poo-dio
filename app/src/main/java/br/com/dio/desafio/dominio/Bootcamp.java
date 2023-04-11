@@ -64,6 +64,11 @@ public class Bootcamp {
     public void setConteudos(Set<Conteudo> conteudos) {
         this.conteudos = conteudos;
     }
+    
+    public void add_Conteudo (Conteudo conteudo){
+        this.conteudos.add(conteudo);
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -9,7 +9,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável por gerar a tela de criação de devs.
+
  */
 public class FDev extends javax.swing.JDialog {
 
@@ -135,7 +138,7 @@ public class FDev extends javax.swing.JDialog {
         } else {
             Dev dev = new Dev();
             dev.setNome(jTNome.getText());
-            Menu.getDevs().add(dev);
+            Menu.add_Dev(dev);
 
             JOptionPane.showMessageDialog(null, "Dev inserido com sucesso");
             jTNome.setText("");

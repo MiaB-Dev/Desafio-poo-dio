@@ -4,36 +4,28 @@
  */
 package br.com.dio.desafio.gui;
 
-import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.*;
-import java.awt.GridLayout;
-import java.awt.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.border.Border;
 import java.awt.Component;
 import java.awt.Dimension;
-
 import javax.swing.*;
 import javax.swing.border.*;
-
 import java.awt.event.*;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
+
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável por gerar a tela de criação de bootcamp.
  */
 public class FBootcamp extends javax.swing.JDialog {
 
@@ -47,8 +39,7 @@ public class FBootcamp extends javax.swing.JDialog {
         super(parent, modal);
 
         initComponents();
-        //super.JPConteudos(new GridLayout(0, 1)); //1 column, any number of rows...
-        //DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+        
         JCheckBoxList checkBoxList = new JCheckBoxList(model);
         checkBoxList.setSize(new Dimension(500, 200));
         jPConteudo.add(checkBoxList);
@@ -266,7 +257,7 @@ public class FBootcamp extends javax.swing.JDialog {
                         conteudo = conteudo.replace(" - C", "");
                         for (Curso curso : Menu.getCursos()) {
                             if (curso.getTitulo().equals(conteudo)) {
-                                bootcamp.getConteudos().add(curso);
+                                bootcamp.add_Conteudo(curso);
                                 break;
                             }
                         }
@@ -275,7 +266,7 @@ public class FBootcamp extends javax.swing.JDialog {
                         conteudo = conteudo.replace(" - M", "");
                         for (Mentoria mentoria : Menu.getMentorias()) {
                             if (mentoria.getTitulo().equals(conteudo)) {
-                                bootcamp.getConteudos().add(mentoria);
+                                bootcamp.add_Conteudo(mentoria);
                                 break;
                             }
                         }
@@ -284,16 +275,16 @@ public class FBootcamp extends javax.swing.JDialog {
                 }
             }
 
-            Menu.getBootcamps().add(bootcamp);
-            
 
+            Menu.add_Bootcamp(bootcamp);
+            
             JOptionPane.showMessageDialog(null, "Bootcamp inserido com sucesso");
             jTNome.setText("");
             jTInicio.setText("");
             jTFim.setText("");
             jTDescricao.setText("");
-
             model.clear();
+            
             if (!Menu.getCursos().isEmpty()) {
                 for (Curso curso : Menu.getCursos()) {
                     model.addElement(new JCheckBox(curso.getTitulo() + " - C"));
@@ -305,10 +296,7 @@ public class FBootcamp extends javax.swing.JDialog {
                     model.addElement(new JCheckBox(mentoria.getTitulo() + " - M"));
                 }
             }
-
         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

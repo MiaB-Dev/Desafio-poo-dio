@@ -5,22 +5,17 @@
 package br.com.dio.desafio.gui;
 
 import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Conteudo;
-import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
 import java.awt.Dimension;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável pela tela que faz a inscrição dos devs nos bootcamps
  */
 public class FInscreveDevBootcamp extends javax.swing.JDialog {
 

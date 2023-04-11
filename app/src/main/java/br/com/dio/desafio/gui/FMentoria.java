@@ -5,15 +5,15 @@
 package br.com.dio.desafio.gui;
 
 import br.com.dio.desafio.dominio.Mentoria;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.zip.DataFormatException;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * Classe responsável por gerar a tela de criação de mentorias.
+
  */
 public class FMentoria extends javax.swing.JDialog {
 
@@ -174,7 +174,7 @@ public class FMentoria extends javax.swing.JDialog {
             DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             mentoria.setData(LocalDate.parse(jTData.getText(), format));
             mentoria.setDescricao(jTDesc.getText());
-            Menu.getMentorias().add(mentoria);
+            Menu.add_Mentoria(mentoria);
 
             JOptionPane.showMessageDialog(null, "Mentoria inserida");
             jTNome.setText("");

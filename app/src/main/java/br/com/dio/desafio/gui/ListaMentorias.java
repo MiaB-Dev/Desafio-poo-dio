@@ -12,7 +12,9 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author Userx
+ * @author Mia
+ * 
+ * Classe responsável por gerar a tela de listagem de mentorias e seus dados.
  */
 public class ListaMentorias extends javax.swing.JDialog {
 
@@ -168,8 +170,6 @@ public class ListaMentorias extends javax.swing.JDialog {
 
         jTData.setText("");
         jTDescricao.setText("");
-
-        //LocalDate localDate;
         String data = "";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
