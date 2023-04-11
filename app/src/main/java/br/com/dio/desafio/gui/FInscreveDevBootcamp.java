@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 public class FInscreveDevBootcamp extends javax.swing.JDialog {
 
     private Dev dev_selec;
-    DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+    private DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
 
     /**
      * Creates new form FCurso
@@ -35,7 +35,7 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
 
         initComponents();
 
-        for (Dev dev : Menu.Devs) {
+        for (Dev dev : Menu.getDevs()) {
             jComboBox1.addItem(dev.getNome());
         }
 
@@ -46,8 +46,8 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
         checkBoxList.setSize(new Dimension(500, 200));
         jPBootcamp.add(checkBoxList);
 
-        if (!Menu.Bootcamps.isEmpty()) {
-            for (Bootcamp bootcamp : Menu.Bootcamps) {
+        if (!Menu.getBootcamps().isEmpty()) {
+            for (Bootcamp bootcamp : Menu.getBootcamps()) {
                 model.addElement(new JCheckBox(bootcamp.getNome()));
             }
         }
@@ -197,19 +197,19 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
         // TODO add your handling code here:
 
         String nome;
-        Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
-        Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
-        List<Bootcamp> bootcamps = new LinkedList<>();
-
-        DefaultListModel<String> model = new DefaultListModel<>();
-        DefaultListModel<String> model2 = new DefaultListModel<>();
+//        Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
+//        Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+//        List<Bootcamp> bootcamps = new LinkedList<>();
+//
+//        DefaultListModel<String> model = new DefaultListModel<>();
+//        DefaultListModel<String> model2 = new DefaultListModel<>();
 
 //        model.addElement("");
 //        model.addElement("abc");
         //JOptionPane.showMessageDialog(null, "Você não está matriculado em nenhum conteúdo");
         if (jComboBox1.getSelectedItem() != null) {
             nome = jComboBox1.getSelectedItem().toString();
-            for (Dev dev : Menu.Devs) {
+            for (Dev dev : Menu.getDevs()) {
                 if (dev.getNome().equals(nome)) {
                     dev_selec = dev;
                     break;
@@ -221,17 +221,15 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String boot;
-        //dev_selec.progredir();
-        //Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
-        //Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
-        Set<Conteudo> conteudosInscritos = dev_selec.getConteudosInscritos();
-        Set<Conteudo> conteudosConcluidos = dev_selec.getConteudosConcluidos();
+
+        //Set<Conteudo> conteudosInscritos = dev_selec.getConteudosInscritos();
+        //Set<Conteudo> conteudosConcluidos = dev_selec.getConteudosConcluidos();
         if ((jComboBox1.getSelectedItem() != null)) {
 
             for (int i = 0; i < model.size(); i++) {
                 if (model.get(i).isSelected()) {
                     boot = model.get(i).getText();
-                    for (Bootcamp bootcamp : Menu.Bootcamps) {
+                    for (Bootcamp bootcamp : Menu.getBootcamps()) {
                         if (bootcamp.getNome().equals(boot)) {
                             dev_selec.inscreverBootcamp(bootcamp);
                             break;
@@ -241,8 +239,8 @@ public class FInscreveDevBootcamp extends javax.swing.JDialog {
             }
             JOptionPane.showMessageDialog(null, "Dev foi inscrito no(s) bootcamp(s)");
             model.clear();
-            if (!Menu.Bootcamps.isEmpty()) {
-                for (Bootcamp bootcamp : Menu.Bootcamps) {
+            if (!Menu.getBootcamps().isEmpty()) {
+                for (Bootcamp bootcamp : Menu.getBootcamps()) {
                     model.addElement(new JCheckBox(bootcamp.getNome()));
                 }
             }

@@ -9,7 +9,7 @@ import br.com.dio.desafio.dominio.Curso;
 
 /**
  *
- * @author Userx
+ * @author Mia
  */
 public class ListaCursos extends javax.swing.JDialog {
 
@@ -22,7 +22,7 @@ public class ListaCursos extends javax.swing.JDialog {
         
         initComponents();
         
-        for (Conteudo curso: Menu.Cursos){
+        for (Conteudo curso: Menu.getCursos()){
             jComboBox1.addItem(curso.getTitulo());
         }
         
@@ -178,7 +178,7 @@ public class ListaCursos extends javax.swing.JDialog {
         String titulo, descricao ="";
         if (jComboBox1.getSelectedItem() != null){
             titulo = jComboBox1.getSelectedItem().toString();
-            for (Curso curso : Menu.Cursos) {
+            for (Curso curso : Menu.getCursos()) {
                 if (curso.getTitulo().equals(titulo)){
                     cargaHoraria= curso.getCargaHoraria();
                     descricao = curso.getDescricao();

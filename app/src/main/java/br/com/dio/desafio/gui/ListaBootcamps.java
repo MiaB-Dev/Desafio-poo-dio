@@ -28,7 +28,7 @@ public class ListaBootcamps extends javax.swing.JDialog {
 
         initComponents();
 
-        for (Bootcamp bootcamp : Menu.Bootcamps) {
+        for (Bootcamp bootcamp : Menu.getBootcamps()) {
             jComboBox1.addItem(bootcamp.getNome());
         }
 
@@ -224,7 +224,7 @@ public class ListaBootcamps extends javax.swing.JDialog {
         jTFim.setText("");
         jTDescricao.setText("");
 
-        LocalDate localDate;
+        //LocalDate localDate;
         String dataInicio = "";
         String dataFim = "a";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -241,7 +241,7 @@ public class ListaBootcamps extends javax.swing.JDialog {
 
         if (jComboBox1.getSelectedItem() != null) {
             titulo = jComboBox1.getSelectedItem().toString();
-            for (Bootcamp bootcamp : Menu.Bootcamps) {
+            for (Bootcamp bootcamp : Menu.getBootcamps()) {
                 if (bootcamp.getNome().equals(titulo)) {
 
                     dataInicio = bootcamp.getDataInicial().format(formatter);

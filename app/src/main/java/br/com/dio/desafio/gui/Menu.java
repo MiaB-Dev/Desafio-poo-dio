@@ -16,14 +16,34 @@ import java.util.Set;
 
 /**
  *
- * @author Userx
+ * @author Mia
  */
 public class Menu extends javax.swing.JFrame {
     
-    public static Set<Curso> Cursos = new LinkedHashSet<>();
-    public static Set<Mentoria> Mentorias = new LinkedHashSet<>();
-    public static Set<Bootcamp> Bootcamps = new LinkedHashSet<>();
-    public static Set<Dev> Devs = new LinkedHashSet<>();
+    public final static Set<Curso> Cursos = new LinkedHashSet<>();
+    public final static Set<Mentoria> Mentorias = new LinkedHashSet<>();
+    public final static Set<Bootcamp> Bootcamps = new LinkedHashSet<>();
+    public final static Set<Dev> Devs = new LinkedHashSet<>();
+
+    public static Set<Curso> getCursos() {
+        return Cursos;
+    }
+
+    public static Set<Mentoria> getMentorias() {
+        return Mentorias;
+    }
+
+
+    public static Set<Bootcamp> getBootcamps() {
+        return Bootcamps;
+    }
+
+
+    public static Set<Dev> getDevs() {
+        return Devs;
+    }
+
+
 
     /**
      * Creates new form Menu
@@ -43,23 +63,24 @@ public class Menu extends javax.swing.JFrame {
         curso1.setCargaHoraria(10);
         Cursos.add(curso1);
         
-        Curso curso2 = new Curso();
+        /*Curso curso2 = new Curso();
         curso2.setTitulo("Curso de Python");
         curso2.setDescricao("Curso básico de Python");
         curso2.setCargaHoraria(13);
         Cursos.add(curso2);
+        */
         
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setDescricao("TDD e Testes unitários");
         mentoria1.setTitulo("Mentoria sobre testes");
         mentoria1.setData(LocalDate.parse("2019-07-19"));
         Mentorias.add(mentoria1);
-        
+        /*
         Mentoria mentoria2 = new Mentoria();
         mentoria2.setDescricao("Princípios SOLID");
         mentoria2.setTitulo("Aplicações de SOLID");
         mentoria2.setData(LocalDate.parse("2022-08-31"));
-        Mentorias.add(mentoria2);
+        Mentorias.add(mentoria2);*/
 
         Bootcamp bootcamp1 = new Bootcamp();
         bootcamp1.setNome("Bootcamp C intensivo");
@@ -75,11 +96,11 @@ public class Menu extends javax.swing.JFrame {
         bootcamp2.setDescricao("Desc temp");
         bootcamp2.setDataInicial(LocalDate.now());
         bootcamp2.setDataFinal(LocalDate.now().plusDays(45));
-        System.out.println("data inicial: " + bootcamp2.getDataInicial());
-        System.out.println("data final: " + bootcamp2.getDataFinal());
+        //System.out.println("data inicial: " + bootcamp2.getDataInicial());
+        //System.out.println("data final: " + bootcamp2.getDataFinal());
 //        bootcamp2.getConteudos().add(curso2);
         bootcamp2.getConteudos().add(cursox);
-        bootcamp2.getConteudos().add(mentoria2);
+        bootcamp2.getConteudos().add(mentoria1);
         Bootcamps.add(bootcamp2);
         
         Dev dev1 = new Dev();

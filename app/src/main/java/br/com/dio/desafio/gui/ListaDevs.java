@@ -28,7 +28,7 @@ public class ListaDevs extends javax.swing.JDialog {
 
         initComponents();
 
-        for (Dev dev : Menu.Devs) {
+        for (Dev dev : Menu.getDevs()) {
             jComboBox1.addItem(dev.getNome());
         }
 
@@ -225,7 +225,7 @@ public class ListaDevs extends javax.swing.JDialog {
 
         if (jComboBox1.getSelectedItem() != null) {
             nome = jComboBox1.getSelectedItem().toString();
-            for (Dev dev : Menu.Devs) {
+            for (Dev dev : Menu.getDevs()) {
                 if (dev.getNome().equals(nome)) {
                     dev_selec = dev;
                     jTXP.setText(String.valueOf(dev.calcularTotalXp()));
@@ -239,10 +239,7 @@ public class ListaDevs extends javax.swing.JDialog {
                         model2.addElement(t.getTitulo());
                     });
 
-                    /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+
                     break;
                 }
             }
@@ -254,8 +251,7 @@ public class ListaDevs extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         dev_selec.progredir();
-        //Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
-        //Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+        
         Set<Conteudo> conteudosInscritos = dev_selec.getConteudosInscritos();
         Set<Conteudo> conteudosConcluidos = dev_selec.getConteudosConcluidos();
         if ( (jComboBox1.getSelectedItem() != null) && (!conteudosInscritos.isEmpty()) ){
@@ -266,20 +262,13 @@ public class ListaDevs extends javax.swing.JDialog {
             jLCFinal.setModel(model2);
 
             jTXP.setText(String.valueOf(dev_selec.calcularTotalXp()));
-            //conteudosInscritos = dev_selec.getConteudosInscritos();
+
             conteudosInscritos.forEach((t) -> {
                 model.addElement(t.getTitulo());
             });
-
-            //conteudosConcluidos = dev_selec.getConteudosConcluidos();
             conteudosConcluidos.forEach((t) -> {
                 model2.addElement(t.getTitulo());
             });
-
-            /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
         } else {
             if ((conteudosInscritos.isEmpty()))
                 JOptionPane.showMessageDialog(null, "Você não está matriculado em nenhum conteúdo");

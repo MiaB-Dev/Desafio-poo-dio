@@ -174,7 +174,7 @@ public class FMentoria extends javax.swing.JDialog {
             DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             mentoria.setData(LocalDate.parse(jTData.getText(), format));
             mentoria.setDescricao(jTDesc.getText());
-            Menu.Mentorias.add(mentoria);
+            Menu.getMentorias().add(mentoria);
 
             JOptionPane.showMessageDialog(null, "Mentoria inserida");
             jTNome.setText("");

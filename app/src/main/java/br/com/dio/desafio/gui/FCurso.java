@@ -61,11 +61,6 @@ public class FCurso extends javax.swing.JDialog {
         });
 
         jTNome.setToolTipText("");
-        jTNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNomeActionPerformed(evt);
-            }
-        });
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome:");
@@ -171,7 +166,7 @@ public class FCurso extends javax.swing.JDialog {
                 curso.setCargaHoraria(Integer.parseInt(jTCargaHoraria.getText()));
 
                 curso.setDescricao(jTDescricao.getText());
-                Menu.Cursos.add(curso);
+                Menu.getCursos().add(curso);
 
                 JOptionPane.showMessageDialog(null, "Curso inserido");
                 jTNome.setText("");
@@ -183,10 +178,6 @@ public class FCurso extends javax.swing.JDialog {
 
         }
     }//GEN-LAST:event_jBCriarCursoActionPerformed
-
-    private void jTNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTNomeActionPerformed
 
     /**
      * @param args the command line arguments

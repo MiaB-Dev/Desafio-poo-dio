@@ -135,7 +135,7 @@ public class FDev extends javax.swing.JDialog {
         } else {
             Dev dev = new Dev();
             dev.setNome(jTNome.getText());
-            Menu.Devs.add(dev);
+            Menu.getDevs().add(dev);
 
             JOptionPane.showMessageDialog(null, "Dev inserido com sucesso");
             jTNome.setText("");

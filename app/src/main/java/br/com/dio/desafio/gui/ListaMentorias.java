@@ -24,7 +24,7 @@ public class ListaMentorias extends javax.swing.JDialog {
 
         initComponents();
 
-        for (Conteudo mentoria : Menu.Mentorias) {
+        for (Conteudo mentoria : Menu.getMentorias()) {
             jComboBox1.addItem(mentoria.getTitulo());
         }
 
@@ -169,22 +169,19 @@ public class ListaMentorias extends javax.swing.JDialog {
         jTData.setText("");
         jTDescricao.setText("");
 
-        LocalDate localDate;
+        //LocalDate localDate;
         String data = "";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         String titulo, descricao = "";
         if (jComboBox1.getSelectedItem() != null) {
             titulo = jComboBox1.getSelectedItem().toString();
-            for (Mentoria mentoria : Menu.Mentorias) {
+            for (Mentoria mentoria : Menu.getMentorias()) {
                 if (mentoria.getTitulo().equals(titulo)) {
-
                     data = mentoria.getData().format(formatter);
-
                     descricao = mentoria.getDescricao();
                     break;
                 }
-                //System.out.print(titulo);
             }
 
             jTData.setText(data);

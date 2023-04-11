@@ -37,7 +37,7 @@ import java.util.LinkedHashSet;
  */
 public class FBootcamp extends javax.swing.JDialog {
 
-    DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+    private DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
 
     //private final JCheckBox checkReg, checkPerm, checkAcc;
     /**
@@ -53,14 +53,14 @@ public class FBootcamp extends javax.swing.JDialog {
         checkBoxList.setSize(new Dimension(500, 200));
         jPConteudo.add(checkBoxList);
 
-        if (!Menu.Cursos.isEmpty()) {
-            for (Curso curso : Menu.Cursos) {
+        if (!Menu.getCursos().isEmpty()) {
+            for (Curso curso : Menu.getCursos()) {
                 model.addElement(new JCheckBox(curso.getTitulo() + " - C"));
             }
         }
 
-        if (!Menu.Mentorias.isEmpty()) {
-            for (Mentoria mentoria : Menu.Mentorias) {
+        if (!Menu.getMentorias().isEmpty()) {
+            for (Mentoria mentoria : Menu.getMentorias()) {
                 model.addElement(new JCheckBox(mentoria.getTitulo() + " - M"));
             }
         }
@@ -261,18 +261,19 @@ public class FBootcamp extends javax.swing.JDialog {
             for (int i = 0; i < model.size(); i++) {
                 if (model.get(i).isSelected()) {
                     conteudo = model.get(i).getText();
+                    //se estiver com um -C, é um curso
                     if (conteudo.contains(" - C")) {
                         conteudo = conteudo.replace(" - C", "");
-                        for (Curso curso : Menu.Cursos) {
+                        for (Curso curso : Menu.getCursos()) {
                             if (curso.getTitulo().equals(conteudo)) {
                                 bootcamp.getConteudos().add(curso);
                                 break;
                             }
                         }
-
+                    //caso contrário, é uma mentoria
                     } else {
                         conteudo = conteudo.replace(" - M", "");
-                        for (Mentoria mentoria : Menu.Mentorias) {
+                        for (Mentoria mentoria : Menu.getMentorias()) {
                             if (mentoria.getTitulo().equals(conteudo)) {
                                 bootcamp.getConteudos().add(mentoria);
                                 break;
@@ -283,7 +284,8 @@ public class FBootcamp extends javax.swing.JDialog {
                 }
             }
 
-            Menu.Bootcamps.add(bootcamp);
+            Menu.getBootcamps().add(bootcamp);
+            
 
             JOptionPane.showMessageDialog(null, "Bootcamp inserido com sucesso");
             jTNome.setText("");
@@ -292,14 +294,14 @@ public class FBootcamp extends javax.swing.JDialog {
             jTDescricao.setText("");
 
             model.clear();
-            if (!Menu.Cursos.isEmpty()) {
-                for (Curso curso : Menu.Cursos) {
+            if (!Menu.getCursos().isEmpty()) {
+                for (Curso curso : Menu.getCursos()) {
                     model.addElement(new JCheckBox(curso.getTitulo() + " - C"));
                 }
             }
 
-            if (!Menu.Mentorias.isEmpty()) {
-                for (Mentoria mentoria : Menu.Mentorias) {
+            if (!Menu.getMentorias().isEmpty()) {
+                for (Mentoria mentoria : Menu.getMentorias()) {
                     model.addElement(new JCheckBox(mentoria.getTitulo() + " - M"));
                 }
             }
