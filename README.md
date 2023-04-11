@@ -7,7 +7,7 @@ O desafio tem como objetivo, exercitar umas das principais ferramentas da OO: ab
 <h2> O Projeto</h2>
 
 <p>
-O projeto desenvolvido foi o de um simulador de bootcamps utilizando como base o código da professora Camila Cavalcante com modificações e algumas melhorias, além da implementação da interface gráfica. É possível criar cursos e mentorias que são inseridos em bootcamps, estes por sua vez recebem incrições de desenvolvedores (devs), que podem ganhar experiência (XP) ao progredir em cada conteúdo. Um dev pode se inscrever em múltiplos bootcamps assim como uma mentoria ou curso pode estar em múltiplos bootcamps.
+O projeto desenvolvido foi o de um simulador de bootcamps utilizando como base o código da professora Camila Cavalcante com modificações e algumas melhorias, além da implementação da interface gráfica. É possível criar cursos e mentorias que são inseridos em bootcamps, estes por sua vez recebem inscrições de desenvolvedores (devs), que podem ganhar experiência (XP) ao progredir em cada conteúdo. Um dev pode se inscrever em múltiplos bootcamps assim como uma mentoria ou curso pode estar em múltiplos bootcamps.
 </p>
 
 <br>
